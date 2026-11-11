@@ -41,3 +41,13 @@ temp/
 # Runtime
 *.pid
 *.seed
+
+# Recursive env, build, log, and local override exclusions (keep .env.example tracked)
+**/.env
+**/.env.*
+!**/.env.example
+*.local
+**/node_modules/
+**/dist/
+**/*.log
+
