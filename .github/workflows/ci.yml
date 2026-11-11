@@ -1,0 +1,61 @@
+# CollabSync Continuous Integration & Optional Deployment Workflow
+# Triggers on pushes to the main branch to validate client and server builds.
+name: CollabSync CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-verify:
+    name: Client Lint/Build & Server Install
+    runs-on: ubuntu-latest
+    # Expose the optional deploy hook secret as a job-level env var so the
+    # step-level `if` condition can evaluate `env.RENDER_DEPLOY_HOOK_URL`
+    # (GitHub Actions does not permit `secrets` directly in `if` conditions).
+    env:
+      RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+
+    steps:
+      # 1. Check out the repository source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js 22 LTS (^22.13.0 satisfies Vite 8 >=22.12.0 and ESLint 10 ^22.13.0)
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '^22.13.0'
+          cache: 'npm'
+          cache-dependency-path: |
+            client/package-lock.json
+            server/package-lock.json
+
+      # 3. Install client dependencies from package-lock.json
+      - name: Install client dependencies
+        working-directory: client
+        run: npm ci
+
+      # 4. Run ESLint checks on the client codebase
+      - name: Lint client
+        working-directory: client
+        run: npm run lint
+
+      # 5. Build the production React + Vite bundle
+      - name: Build client
+        working-directory: client
+        run: npm run build
+
+      # 6. Verify clean installation of server dependencies from package-lock.json
+      - name: Install server dependencies
+        working-directory: server
+        run: npm ci
+
+      # 7. Optionally trigger a Render deploy hook once CI checks pass.
+      #    Skipped automatically when the RENDER_DEPLOY_HOOK_URL secret is not set.
+      #    Note: Disable Render's built-in Git Auto-Deploy if you set this secret to avoid duplicate deploys.
+      - name: Trigger Render deploy hook (optional)
+        if: ${{ env.RENDER_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsS -X POST "$RENDER_DEPLOY_HOOK_URL"
+
