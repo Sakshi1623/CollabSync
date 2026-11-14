@@ -45,14 +45,14 @@ const MessageList = ({ channelId, messages = [], loading, error }) => {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-3">
+    <div className="flex-1 min-h-0 overflow-y-auto px-3 sm:px-6 py-4 space-y-3">
       {messages.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full text-center px-4">
           <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center mb-3">
             <MessageSquareText className="w-6 h-6 text-zinc-500" />
           </div>
           <p className="text-sm font-medium text-zinc-300">No messages yet</p>
-          <p className="text-xs text-zinc-500 mt-1">
+          <p className="text-sm text-zinc-500 mt-1">
             Be the first to start the conversation in this channel.
           </p>
         </div>
@@ -74,7 +74,7 @@ const MessageList = ({ channelId, messages = [], loading, error }) => {
               )}
 
               <div
-                className={`max-w-[85%] sm:max-w-xl rounded-2xl px-4 py-2.5 ${
+                className={`max-w-[88%] sm:max-w-xl rounded-2xl px-4 py-2.5 ${
                   isOwnMessage
                     ? 'bg-indigo-600 text-white rounded-br-sm shadow-md shadow-indigo-950/40'
                     : 'bg-zinc-900 border border-white/10 text-zinc-100 rounded-bl-sm'
@@ -82,14 +82,14 @@ const MessageList = ({ channelId, messages = [], loading, error }) => {
               >
                 <div className="flex items-baseline justify-between gap-3 mb-1">
                   <span
-                    className={`text-xs font-semibold ${
+                    className={`text-sm font-semibold ${
                       isOwnMessage ? 'text-indigo-100' : 'text-zinc-300'
                     }`}
                   >
                     {isOwnMessage ? 'You' : senderName}
                   </span>
                   <span
-                    className={`text-[11px] ${
+                    className={`text-xs ${
                       isOwnMessage ? 'text-indigo-200/80' : 'text-zinc-500'
                     }`}
                   >

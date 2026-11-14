@@ -30,14 +30,14 @@ const Navbar = ({ onToggleSidebar }) => {
           <button
             type="button"
             onClick={onToggleSidebar}
-            className="md:hidden p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors"
+            className="md:hidden min-h-[40px] min-w-[40px] p-2 flex items-center justify-center rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors cursor-pointer"
             aria-label="Toggle navigation sidebar"
           >
             <Menu className="w-5 h-5" />
           </button>
         )}
 
-        <Link to="/dashboard" className="flex items-center gap-2.5 shrink-0 group">
+        <Link to="/dashboard" className="flex items-center gap-2.5 shrink-0 group min-h-[40px]">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-md shadow-indigo-950/60 group-hover:from-indigo-400 group-hover:to-violet-500 transition-all">
             <Layers className="w-4 h-4 text-white" />
           </div>
@@ -56,13 +56,13 @@ const Navbar = ({ onToggleSidebar }) => {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors min-h-[40px] ${
                     isActive
                       ? 'bg-white/10 text-white'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/5'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </Link>
               );
@@ -73,7 +73,7 @@ const Navbar = ({ onToggleSidebar }) => {
       {/* Right: Socket status, notifications, user pill, logout */}
       <div className="flex items-center gap-2 sm:gap-3">
         <div
-          className={`hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
+          className={`hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm font-medium border ${
             isConnected
               ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/25'
               : 'bg-amber-500/10 text-amber-300 border-amber-500/25'
@@ -92,17 +92,17 @@ const Navbar = ({ onToggleSidebar }) => {
 
         <Link
           to="/profile"
-          className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
+          className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-white/5 transition-colors min-h-[40px]"
           title="Profile Settings"
         >
-          <div className="w-7 h-7 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 flex items-center justify-center text-xs font-semibold shrink-0">
+          <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 flex items-center justify-center text-xs font-semibold shrink-0">
             {getInitials(user?.name)}
           </div>
           <span className="hidden sm:inline text-sm font-medium text-zinc-200 max-w-32 truncate">
             {user?.name}
           </span>
           <span
-            className={`hidden sm:inline-flex px-2 py-0.5 rounded-full text-[11px] font-medium capitalize ${getRoleBadgeStyle(
+            className={`hidden sm:inline-flex px-2 py-0.5 rounded-full text-xs font-medium capitalize ${getRoleBadgeStyle(
               user?.role
             )}`}
           >
@@ -113,10 +113,10 @@ const Navbar = ({ onToggleSidebar }) => {
         <button
           type="button"
           onClick={handleLogout}
-          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300 bg-zinc-800/80 hover:bg-rose-600/20 hover:text-rose-200 border border-white/10 hover:border-rose-500/30 transition-colors cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 bg-zinc-800/80 hover:bg-rose-600/20 hover:text-rose-200 border border-white/10 hover:border-rose-500/30 transition-colors cursor-pointer min-h-[40px]"
           title="Logout"
         >
-          <LogOut className="w-3.5 h-3.5" />
+          <LogOut className="w-4 h-4" />
           <span className="hidden sm:inline">Logout</span>
         </button>
       </div>

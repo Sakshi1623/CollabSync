@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   return (
     <WorkspaceProvider>
-      <div className="h-screen flex flex-col bg-zinc-950 text-zinc-100 overflow-hidden">
+      <div className="h-dvh flex flex-col bg-zinc-950 text-zinc-100 overflow-hidden">
         <Navbar
           onToggleSidebar={() => setMobileSidebarOpen((prev) => !prev)}
         />

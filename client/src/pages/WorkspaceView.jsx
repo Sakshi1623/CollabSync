@@ -28,7 +28,7 @@ const WorkspaceView = ({ onOpenSidebar }) => {
             <button
               type="button"
               onClick={onOpenSidebar}
-              className="md:hidden inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-colors cursor-pointer"
+              className="md:hidden inline-flex items-center justify-center gap-2 px-4 py-2.5 min-h-[40px] text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-colors cursor-pointer"
             >
               <Menu className="w-4 h-4" />
               <span>Browse Workspaces</span>
@@ -51,12 +51,12 @@ const WorkspaceView = ({ onOpenSidebar }) => {
       ) : (
         <div className="flex-1 flex flex-col min-w-0 bg-zinc-950">
           <div className="bg-zinc-900/70 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-            <div>
-              <h1 className="text-base font-semibold text-zinc-100">
+            <div className="min-w-0">
+              <h1 className="text-base font-semibold text-zinc-100 truncate">
                 {selectedWorkspace.name}
               </h1>
               {selectedWorkspace.description && (
-                <p className="text-xs text-zinc-400 truncate">
+                <p className="text-sm text-zinc-400 truncate">
                   {selectedWorkspace.description}
                 </p>
               )}
@@ -64,7 +64,7 @@ const WorkspaceView = ({ onOpenSidebar }) => {
             <button
               type="button"
               onClick={() => setShowAnnouncements((prev) => !prev)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-3 py-2 min-h-[40px] rounded-lg text-sm font-medium border transition-colors cursor-pointer shrink-0 ${
                 showAnnouncements
                   ? 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
                   : 'bg-zinc-800/80 text-zinc-300 border-white/10 hover:bg-zinc-800'
@@ -96,7 +96,7 @@ const WorkspaceView = ({ onOpenSidebar }) => {
                       type="button"
                       key={channel._id}
                       onClick={() => setSelectedChannel(channel)}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-sm font-medium text-zinc-200 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[40px] rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-sm font-medium text-zinc-200 transition-colors cursor-pointer"
                     >
                       <Hash className="w-3.5 h-3.5 text-indigo-400" />
                       <span>{channel.name}</span>
@@ -116,7 +116,7 @@ const WorkspaceView = ({ onOpenSidebar }) => {
             className="fixed top-14 inset-x-0 bottom-0 bg-black/60 z-30 xl:hidden"
             onClick={() => setShowAnnouncements(false)}
           />
-          <div className="fixed top-14 bottom-0 right-0 w-80 sm:w-96 z-40 xl:static xl:h-full xl:z-auto xl:w-96 shrink-0">
+          <div className="fixed top-14 bottom-0 right-0 w-full max-w-sm sm:w-96 z-40 xl:static xl:h-full xl:z-auto xl:w-96 shrink-0">
             <AnnouncementsPanel
               workspaceId={selectedWorkspace._id}
               onClose={() => setShowAnnouncements(false)}

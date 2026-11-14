@@ -169,7 +169,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
   };
 
   const sidebarContent = (
-    <aside className="w-64 h-full bg-zinc-900/95 border-r border-white/10 text-zinc-100 flex flex-col">
+    <aside className="w-full md:w-64 h-full bg-zinc-900/95 border-r border-white/10 text-zinc-100 flex flex-col">
       {/* Mobile Drawer Header */}
       <div className="md:hidden px-4 py-3 border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -179,7 +179,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 cursor-pointer"
+          className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 cursor-pointer"
           aria-label="Close sidebar"
         >
           <X className="w-4 h-4" />
@@ -191,7 +191,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
         <Link
           to="/profile"
           onClick={onClose}
-          className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
+          className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors min-h-[40px] ${
             location.pathname === '/profile'
               ? 'bg-white/10 text-white'
               : 'text-zinc-300 hover:bg-white/5'
@@ -204,7 +204,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
           <Link
             to="/admin"
             onClick={onClose}
-            className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
+            className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors min-h-[40px] ${
               location.pathname === '/admin'
                 ? 'bg-white/10 text-white'
                 : 'text-zinc-300 hover:bg-white/5'
@@ -217,7 +217,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
       </div>
 
       {loading ? (
-        <div className="flex-1 flex items-center justify-center gap-2 text-xs text-zinc-400 p-4">
+        <div className="flex-1 flex items-center justify-center gap-2 text-sm text-zinc-400 p-4">
           <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
           <span>Loading workspaces...</span>
         </div>
@@ -226,14 +226,14 @@ const Sidebar = ({ isOpen = false, onClose }) => {
           {/* Workspaces Section */}
           <div className="p-3.5 border-b border-white/10">
             <div className="flex items-center justify-between mb-2.5 px-1">
-              <h2 className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
                 Workspaces
               </h2>
               {canCreate && (
                 <button
                   type="button"
                   onClick={() => setShowWorkspaceModal(true)}
-                  className="p-1 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   title="Create Workspace"
                   aria-label="Create Workspace"
                 >
@@ -244,7 +244,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
 
             <div className="space-y-1 max-h-48 overflow-y-auto">
               {workspaces.length === 0 ? (
-                <p className="text-xs text-zinc-500 px-2 py-2">No workspaces yet</p>
+                <p className="text-sm text-zinc-500 px-2 py-2">No workspaces yet</p>
               ) : (
                 workspaces.map((workspace) => {
                   const isActive = selectedWorkspace?._id === workspace._id;
@@ -253,7 +253,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
                       type="button"
                       key={workspace._id}
                       onClick={() => handleWorkspaceSelect(workspace)}
-                      className={`w-full text-left px-3 py-2 rounded-xl text-sm font-medium flex items-center gap-2.5 transition-all cursor-pointer ${
+                      className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium flex items-center gap-2.5 transition-all cursor-pointer min-h-[40px] ${
                         isActive
                           ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/60'
                           : 'text-zinc-300 hover:bg-white/5 hover:text-zinc-100'
@@ -276,7 +276,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
           {selectedWorkspace && (
             <div className="p-3.5 flex-1 overflow-y-auto">
               <div className="flex items-center justify-between mb-2.5 px-1">
-                <h2 className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
                   Channels
                 </h2>
                 {canCreate && (
@@ -284,7 +284,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
                     <button
                       type="button"
                       onClick={() => setShowChannelModal(true)}
-                      className="p-1 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                      className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                       title="Create Channel"
                       aria-label="Create Channel"
                     >
@@ -293,7 +293,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
                     <button
                       type="button"
                       onClick={() => setShowAddMemberForm(true)}
-                      className="p-1 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                      className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                       title="Add Member to Workspace"
                       aria-label="Add Member"
                     >
@@ -305,7 +305,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
 
               <div className="space-y-1">
                 {channels.length === 0 ? (
-                  <p className="text-xs text-zinc-500 px-2 py-2">No channels yet</p>
+                  <p className="text-sm text-zinc-500 px-2 py-2">No channels yet</p>
                 ) : (
                   channels.map((channel) => {
                     const isActive = selectedChannel?._id === channel._id;
@@ -314,7 +314,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
                         type="button"
                         key={channel._id}
                         onClick={() => handleChannelSelect(channel)}
-                        className={`w-full text-left px-3 py-2 rounded-xl text-sm flex items-center gap-2 transition-colors cursor-pointer ${
+                        className={`w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2 transition-colors cursor-pointer min-h-[40px] ${
                           isActive
                             ? 'bg-white/10 text-white font-medium'
                             : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200'
@@ -340,17 +340,17 @@ const Sidebar = ({ isOpen = false, onClose }) => {
       <div className="hidden sm:block p-3 border-t border-white/10 space-y-1">
         <Link
           to="/profile"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors"
+          className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors min-h-[40px]"
         >
-          <User className="w-3.5 h-3.5" />
+          <User className="w-4 h-4" />
           <span>Profile Settings</span>
         </Link>
         {isAdmin && (
           <Link
             to="/admin"
-            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors"
+            className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-white/5 transition-colors min-h-[40px]"
           >
-            <Shield className="w-3.5 h-3.5" />
+            <Shield className="w-4 h-4" />
             <span>Admin Panel</span>
           </Link>
         )}
@@ -367,10 +367,12 @@ const Sidebar = ({ isOpen = false, onClose }) => {
       {isOpen && (
         <div className="fixed inset-0 z-40 md:hidden flex">
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity"
             onClick={onClose}
           />
-          <div className="relative z-50 h-full">{sidebarContent}</div>
+          <div className="relative z-50 h-full w-72 max-w-[85vw] shadow-2xl animate-slide-in">
+            {sidebarContent}
+          </div>
         </div>
       )}
 

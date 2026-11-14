@@ -70,14 +70,14 @@ const AdminPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="min-h-dvh bg-zinc-950 text-zinc-100 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 container mx-auto px-4 sm:px-6 py-8 max-w-6xl">
+      <main className="flex-1 container mx-auto px-3 sm:px-6 py-6 sm:py-8 max-w-6xl w-full overflow-hidden">
         <div className="mb-6">
           <Link
             to="/dashboard"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-zinc-200 transition-colors mb-4"
+            className="inline-flex items-center gap-1.5 min-h-[40px] text-sm font-medium text-zinc-400 hover:text-zinc-200 transition-colors mb-4"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Workspaces</span>
@@ -106,17 +106,17 @@ const AdminPage = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, email, role..."
-                className="w-full pl-9 pr-3.5 py-2 text-sm bg-zinc-900 border border-white/10 rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full pl-9 pr-3.5 py-2 min-h-[40px] text-base sm:text-sm bg-zinc-900 border border-white/10 rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
           </div>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
           <div className="bg-zinc-900/90 border border-white/10 rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-zinc-400">Total Users</p>
+              <p className="text-sm font-medium text-zinc-400">Total Users</p>
               <p className="text-2xl font-bold text-zinc-100 mt-1 tabular-nums">{stats.total}</p>
             </div>
             <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400">
@@ -125,7 +125,7 @@ const AdminPage = () => {
           </div>
           <div className="bg-zinc-900/90 border border-white/10 rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-zinc-400">Administrators</p>
+              <p className="text-sm font-medium text-zinc-400">Administrators</p>
               <p className="text-2xl font-bold text-zinc-100 mt-1 tabular-nums">{stats.admins}</p>
             </div>
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
@@ -134,7 +134,7 @@ const AdminPage = () => {
           </div>
           <div className="bg-zinc-900/90 border border-white/10 rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-zinc-400">Online Now</p>
+              <p className="text-sm font-medium text-zinc-400">Online Now</p>
               <p className="text-2xl font-bold text-emerald-400 mt-1 tabular-nums">{stats.online}</p>
             </div>
             <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -160,19 +160,19 @@ const AdminPage = () => {
               <table className="min-w-full divide-y divide-white/10">
                 <thead className="bg-zinc-950/60">
                   <tr>
-                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                    <th className="px-6 py-3.5 text-left text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                       User
                     </th>
-                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                    <th className="px-6 py-3.5 text-left text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                       Email
                     </th>
-                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                    <th className="px-6 py-3.5 text-left text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                       Role
                     </th>
-                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                    <th className="px-6 py-3.5 text-left text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                       Assign Role
                     </th>
-                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                    <th className="px-6 py-3.5 text-left text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                       Status
                     </th>
                   </tr>
@@ -215,7 +215,7 @@ const AdminPage = () => {
                             onChange={(e) => handleRoleChange(user._id, e.target.value)}
                             disabled={updating === user._id || isSelf}
                             title={isSelf ? 'You cannot change your own role' : 'Change user role'}
-                            className="text-sm bg-zinc-950 border border-zinc-800 text-zinc-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-45 disabled:cursor-not-allowed cursor-pointer"
+                            className="text-sm bg-zinc-950 border border-zinc-800 text-zinc-200 rounded-lg px-2.5 py-1.5 min-h-[40px] focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-45 disabled:cursor-not-allowed cursor-pointer"
                           >
                             <option value="admin">Admin</option>
                             <option value="leader">Leader</option>

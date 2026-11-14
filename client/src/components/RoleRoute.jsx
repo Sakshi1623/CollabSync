@@ -11,7 +11,7 @@ const RoleRoute = ({ children, allowedRoles }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-dvh bg-zinc-950 flex items-center justify-center">
         <Loader2 className="w-5 h-5 animate-spin text-indigo-400" />
       </div>
     );

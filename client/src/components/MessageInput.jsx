@@ -73,7 +73,7 @@ const MessageInput = ({ channelId, sendMessage }) => {
             placeholder="Message this channel..."
             rows="2"
             disabled={sending}
-            className={`flex-1 px-3.5 py-2.5 text-sm bg-zinc-950/80 border rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 resize-none transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+            className={`flex-1 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm bg-zinc-950/80 border rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 resize-none transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
               isOverLimit
                 ? 'border-rose-500 focus:ring-rose-500/25'
                 : 'border-zinc-800 focus:border-indigo-500 focus:ring-indigo-500/20'
@@ -83,7 +83,7 @@ const MessageInput = ({ channelId, sendMessage }) => {
           <button
             type="submit"
             disabled={!content.trim() || sending || isOverLimit}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 h-10 min-h-[40px] min-w-[40px] bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer shrink-0"
             aria-label="Send message"
           >
             {sending ? (
@@ -96,11 +96,11 @@ const MessageInput = ({ channelId, sendMessage }) => {
         </div>
 
         <div className="flex items-center justify-between mt-1.5 px-0.5">
-          <span className="text-[11px] text-zinc-500 hidden sm:inline">
+          <span className="text-xs text-zinc-500 hidden sm:inline">
             Enter to send · Shift+Enter for new line
           </span>
           <span
-            className={`text-[11px] ml-auto tabular-nums ${
+            className={`text-xs ml-auto tabular-nums ${
               isOverLimit ? 'text-rose-400 font-medium' : 'text-zinc-500'
             }`}
           >

@@ -12,7 +12,7 @@ const NotificationBell = () => {
       <button
         type="button"
         onClick={() => setShowDropdown((prev) => !prev)}
-        className="relative p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 transition-colors cursor-pointer"
+        className="relative min-h-[40px] min-w-[40px] flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 transition-colors cursor-pointer"
         aria-label="Notifications"
       >
         <Bell className="w-5 h-5" />

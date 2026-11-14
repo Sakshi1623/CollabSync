@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children, roles }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-dvh bg-zinc-950 flex items-center justify-center">
         <div className="flex items-center gap-2.5 text-sm text-zinc-400">
           <Loader2 className="w-5 h-5 animate-spin text-indigo-400" />
           <span>Loading workspace...</span>
@@ -26,8 +26,8 @@ const ProtectedRoute = ({ children, roles }) => {
 
   if (roles && !roles.includes(user.role)) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-zinc-900 border border-white/10 rounded-2xl p-8 text-center shadow-2xl">
+      <div className="min-h-dvh bg-zinc-950 flex items-center justify-center px-4 py-8">
+        <div className="max-w-md w-full bg-zinc-900 border border-white/10 rounded-2xl p-6 sm:p-8 text-center shadow-2xl">
           <div className="w-12 h-12 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 flex items-center justify-center mx-auto mb-4">
             <ShieldAlert className="w-6 h-6" />
           </div>

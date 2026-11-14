@@ -52,14 +52,14 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="min-h-dvh bg-zinc-950 text-zinc-100 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 container mx-auto px-4 py-8 max-w-2xl">
+      <main className="flex-1 container mx-auto px-4 py-6 sm:py-8 max-w-2xl">
         <div className="mb-6">
           <Link
             to="/dashboard"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-zinc-200 transition-colors mb-4"
+            className="inline-flex items-center gap-1.5 min-h-[40px] text-sm font-medium text-zinc-400 hover:text-zinc-200 transition-colors mb-4"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Workspaces</span>
@@ -80,7 +80,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="bg-zinc-900/90 border border-white/10 rounded-2xl shadow-2xl shadow-black/40 p-6 sm:p-7">
+        <div className="bg-zinc-900/90 border border-white/10 rounded-2xl shadow-2xl shadow-black/40 p-5 sm:p-7">
           {error && (
             <div className="mb-5 px-4 py-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-300 text-sm">
               {error}
@@ -97,7 +97,7 @@ const ProfilePage = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name field */}
             <div>
-              <label htmlFor="profile-name" className="block text-xs font-medium text-zinc-300 mb-1.5">
+              <label htmlFor="profile-name" className="block text-sm font-medium text-zinc-300 mb-1.5">
                 Display Name
               </label>
               <div className="relative">
@@ -107,7 +107,7 @@ const ProfilePage = () => {
                   id="profile-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 text-sm bg-zinc-950/80 border border-zinc-800 rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 min-h-[44px] text-base sm:text-sm bg-zinc-950/80 border border-zinc-800 rounded-xl text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                   placeholder="Your name"
                   required
                 />
@@ -116,7 +116,7 @@ const ProfilePage = () => {
 
             {/* Email field - read-only */}
             <div>
-              <label htmlFor="profile-email" className="block text-xs font-medium text-zinc-300 mb-1.5">
+              <label htmlFor="profile-email" className="block text-sm font-medium text-zinc-300 mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -126,16 +126,16 @@ const ProfilePage = () => {
                   id="profile-email"
                   value={user?.email || ''}
                   readOnly
-                  className="w-full pl-10 pr-4 py-2.5 text-sm border border-zinc-800/80 rounded-xl bg-zinc-950/40 text-zinc-400 cursor-not-allowed"
+                  className="w-full pl-10 pr-4 py-2.5 min-h-[44px] text-base sm:text-sm border border-zinc-800/80 rounded-xl bg-zinc-950/40 text-zinc-400 cursor-not-allowed"
                 />
               </div>
-              <p className="mt-1.5 text-xs text-zinc-500">Email cannot be changed</p>
+              <p className="mt-1.5 text-sm text-zinc-500">Email cannot be changed</p>
             </div>
 
             {/* Role & Status */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
               <div className="p-3.5 rounded-xl bg-zinc-950/50 border border-white/5">
-                <span className="block text-xs font-medium text-zinc-400 mb-1.5">
+                <span className="block text-sm font-medium text-zinc-400 mb-1.5">
                   Role
                 </span>
                 <span
@@ -145,13 +145,13 @@ const ProfilePage = () => {
                 >
                   {user?.role}
                 </span>
-                <p className="mt-2 text-[11px] text-zinc-500">
+                <p className="mt-2 text-xs sm:text-sm text-zinc-500">
                   Only admins can change user roles
                 </p>
               </div>
 
               <div className="p-3.5 rounded-xl bg-zinc-950/50 border border-white/5">
-                <span className="block text-xs font-medium text-zinc-400 mb-1.5">
+                <span className="block text-sm font-medium text-zinc-400 mb-1.5">
                   Account Status
                 </span>
                 <span
@@ -176,7 +176,7 @@ const ProfilePage = () => {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 rounded-xl transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 min-h-[44px] text-sm font-medium text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 rounded-xl transition-colors cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Logout</span>
@@ -185,7 +185,7 @@ const ProfilePage = () => {
               <button
                 type="submit"
                 disabled={loading || name.trim() === user?.name}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />

@@ -42,13 +42,13 @@ const NotificationDropdown = ({
   return (
     <div
       ref={dropdownRef}
-      className="fixed sm:absolute right-3 sm:right-0 top-14 sm:top-auto sm:mt-2 w-[calc(100vw-1.5rem)] sm:w-96 bg-zinc-900 rounded-xl shadow-2xl shadow-black/70 border border-white/10 z-50 max-h-[28rem] overflow-hidden flex flex-col animate-slide-in"
+      className="fixed sm:absolute right-3 sm:right-0 top-14 sm:top-auto sm:mt-2 w-[calc(100vw-1.5rem)] sm:w-96 bg-zinc-900 rounded-xl shadow-2xl shadow-black/70 border border-white/10 z-50 max-h-[80dvh] sm:max-h-[28rem] overflow-hidden flex flex-col animate-slide-in"
     >
       {/* Header */}
       <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between bg-zinc-900/95">
         <h3 className="text-sm font-semibold text-zinc-100">Notifications</h3>
         {unreadCount > 0 && (
-          <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
             {unreadCount} unread
           </span>
         )}
@@ -64,7 +64,7 @@ const NotificationDropdown = ({
           <div className="p-8 text-center text-zinc-500">
             <BellOff className="w-9 h-9 mx-auto mb-2.5 text-zinc-600" />
             <p className="text-sm font-medium text-zinc-400">All caught up</p>
-            <p className="text-xs text-zinc-500 mt-1">No notifications yet</p>
+            <p className="text-sm text-zinc-500 mt-1">No notifications yet</p>
           </div>
         ) : (
           notifications.map((notification, index) => (
@@ -102,10 +102,10 @@ const NotificationDropdown = ({
                   <button
                     type="button"
                     onClick={() => markAsRead(notification._id)}
-                    className="flex-shrink-0 inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium text-indigo-300 hover:text-white bg-indigo-500/10 hover:bg-indigo-500/25 border border-indigo-500/20 transition-colors cursor-pointer"
+                    className="flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 min-h-[40px] rounded-lg text-sm font-medium text-indigo-300 hover:text-white bg-indigo-500/10 hover:bg-indigo-500/25 border border-indigo-500/20 transition-colors cursor-pointer"
                     title="Mark as read"
                   >
-                    <Check className="w-3 h-3" />
+                    <Check className="w-3.5 h-3.5" />
                     <span>Read</span>
                   </button>
                 )}
