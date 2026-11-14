@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 /**
  * Protect middleware - verifies JWT token
- * Attaches user (id and role) to req.user
+ * Loads user from database and attaches to req.user
  */
 const protect = async (req, res, next) => {
   let token;
@@ -20,8 +20,14 @@ const protect = async (req, res, next) => {
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      // Attach user to request (id and role from token)
-      req.user = { id: decoded.id, role: decoded.role };
+      // Load user from database (excluding password)
+      const user = await User.findById(decoded.id).select('-password');
+      if (!user) {
+        return res.status(401).json({ message: 'Not authorized, user not found' });
+      }
+
+      // Attach user to request
+      req.user = user;
 
       next();
     } catch (error) {

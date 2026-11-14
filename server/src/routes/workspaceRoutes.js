@@ -33,11 +33,12 @@ router.post(
 // Get all workspaces user is a member of
 router.get('/', protect, getWorkspaces);
 
-// Add member to workspace - admin or leader only
+// Add member to workspace - admin or leader who is a member of the workspace
 router.post(
   '/:id/members',
   protect,
   authorize('admin', 'leader'),
+  checkWorkspaceMembership,
   addMemberValidation,
   addMember
 );
